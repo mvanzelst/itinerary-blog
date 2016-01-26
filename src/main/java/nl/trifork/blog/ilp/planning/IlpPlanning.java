@@ -4,14 +4,13 @@ import com.google.ortools.linearsolver.MPConstraint;
 import com.google.ortools.linearsolver.MPObjective;
 import com.google.ortools.linearsolver.MPSolver;
 import com.google.ortools.linearsolver.MPVariable;
-import org.springframework.core.io.ClassPathResource;
+import nl.trifork.blog.ilp.planning.util.NativeLibraryLoader;
 
-import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public class IlpSolver {
+public class IlpPlanning {
 
     public void solve() {
         List<String> pois = IntStream.range(0, 1000)
@@ -23,7 +22,7 @@ public class IlpSolver {
                 .collect(Collectors.toList());
 
 
-        MPSolver solver = createSolver();
+        MPSolver solver = new MPSolver("LinearProgrammingExample", MPSolver.OptimizationProblemType.GLOP_LINEAR_PROGRAMMING);
         List<MPVariable> allVariables = new ArrayList<>();
         Map<String, List<MPVariable>> variablesGroupedByPoi = new HashMap<>();
         Map<String, List<MPVariable>> variablesGroupedByTimeslot = new HashMap<>();
@@ -108,23 +107,10 @@ public class IlpSolver {
         }
     }
 
-    private MPSolver createSolver() {
-        try {
-            return new MPSolver("LinearProgrammingExample", MPSolver.OptimizationProblemType.GLOP_LINEAR_PROGRAMMING);
-        } catch (IllegalArgumentException e) {
-            return null;
-        }
-    }
-
     public static void main(String args[]){
-        try {
-            System.load(new ClassPathResource("lib/" + args[0] + "/libjniortools.so").getFile().getAbsolutePath());
-        } catch (IOException e) {
-            throw new RuntimeException("Failed to load or tools library. Please specify platform as argument. " +
-                    "Available platforms are: linux64, mac64 or win64");
-        }
+        NativeLibraryLoader.loadOrTools(args[0]);
 
-        IlpSolver ilpSolver = new IlpSolver();
+        IlpPlanning ilpSolver = new IlpPlanning();
         ilpSolver.solve();
     }
 }
