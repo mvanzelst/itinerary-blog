@@ -118,9 +118,10 @@ public class IlpSolver {
 
     public static void main(String args[]){
         try {
-            System.load(new ClassPathResource("lib/linux64/libjniortools.so").getFile().getAbsolutePath());
+            System.load(new ClassPathResource("lib/" + args[0] + "/libjniortools.so").getFile().getAbsolutePath());
         } catch (IOException e) {
-            throw new RuntimeException("Failed to load or tools library");
+            throw new RuntimeException("Failed to load or tools library. Please specify platform as argument. " +
+                    "Available platforms are: linux64, mac64 or win64");
         }
 
         IlpSolver ilpSolver = new IlpSolver();
