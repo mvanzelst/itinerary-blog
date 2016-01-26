@@ -9,8 +9,7 @@ import nl.trifork.blog.ilp.planning.util.NativeLibraryLoader;
 public class IlpExample {
 
     public void solve() {
-        MPSolver solver = new MPSolver("LinearProgrammingExample",
-                MPSolver.OptimizationProblemType.GLOP_LINEAR_PROGRAMMING);
+        MPSolver solver = new MPSolver("LinearProgrammingExample", MPSolver.OptimizationProblemType.GLOP_LINEAR_PROGRAMMING);
 
         // Create integer variables a,b,c and d with a lower limit of 0 and an upper limit of 1
         MPVariable rijksmuseumMorning = solver.makeIntVar(0, 1, "a");
