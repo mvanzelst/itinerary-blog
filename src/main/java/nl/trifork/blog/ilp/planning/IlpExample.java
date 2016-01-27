@@ -51,12 +51,12 @@ public class IlpExample {
 
         solver.solve();
 
-        System.out.println("Optimal objective value = " + solver.objective().value());
+        System.out.println("Optimal objective value = " + (int) solver.objective().value());
 
-        System.out.println("Visit the Rijksmuseum in the morning " + rijksmuseumMorning.solutionValue() + " times");
-        System.out.println("Visit the Rijksmuseum in the afternoon " + rijksmuseumAfternoon.solutionValue() + " times");
-        System.out.println("Visit the van Gogh museum in the morning " + vanGoghMuseumMorning.solutionValue() + " times");
-        System.out.println("Visit the van Gogh museum in the afternoon " + vanGoghMuseumAfternoon.solutionValue() + " times");
+        System.out.println("Visit the Rijksmuseum in the morning " + (int) rijksmuseumMorning.solutionValue() + " times");
+        System.out.println("Visit the Rijksmuseum in the afternoon " + (int) rijksmuseumAfternoon.solutionValue() + " times");
+        System.out.println("Visit the van Gogh museum in the morning " + (int) vanGoghMuseumMorning.solutionValue() + " times");
+        System.out.println("Visit the van Gogh museum in the afternoon " + (int) vanGoghMuseumAfternoon.solutionValue() + " times");
     }
 
     public static void main(String args[]){
