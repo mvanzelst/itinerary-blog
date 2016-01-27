@@ -24,7 +24,7 @@ public class BruteForcePlanning {
 
 
         BigInteger loopCounter = new BigInteger("0");
-        BigInteger totalLoops = new BigInteger("1000000000000000000000");
+        BigInteger totalLoops = new BigInteger("1000000000000000000");
         BigInteger showProgressInterval = new BigInteger("10000000");
         long start = System.currentTimeMillis();
         int maxSum = 0;
@@ -62,7 +62,12 @@ public class BruteForcePlanning {
                                     BigDecimal ratioComplete = new BigDecimal(loopCounter).divide(new BigDecimal(totalLoops));
                                     BigDecimal multiplierTodo = BigDecimal.ONE.divide(ratioComplete, MathContext.DECIMAL128);
                                     BigDecimal totalDurationInMilliseconds = multiplierTodo.multiply(new BigDecimal(System.currentTimeMillis() - start));
-                                    BigInteger durationInYears = totalDurationInMilliseconds.divide(new BigDecimal(1000 * 60 * 60 * 24 * 365), MathContext.DECIMAL128).toBigInteger();
+                                    BigInteger durationInYears = totalDurationInMilliseconds.divide(new BigDecimal(1000L * 60L * 60L * 24L * 365L), MathContext.DECIMAL128).toBigInteger();
+                                    System.out.println(String.format("Done %s out of %s which is %s %%", loopCounter, totalLoops,
+                                            new BigDecimal(loopCounter)
+                                                    .divide(new BigDecimal(totalLoops))
+                                                    .multiply(new BigDecimal(100))
+                                                    .toPlainString()));
                                     System.out.println(String.format("Total duration in years: %s", durationInYears));
                                 }
                             }
