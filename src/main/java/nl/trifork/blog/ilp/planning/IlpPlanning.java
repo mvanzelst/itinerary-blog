@@ -108,7 +108,7 @@ public class IlpPlanning {
     }
 
     public static void main(String args[]){
-        NativeLibraryLoader.loadOrTools(args[0]);
+        NativeLibraryLoader.loadOrTools(args);
 
         IlpPlanning ilpSolver = new IlpPlanning();
         ilpSolver.solve();

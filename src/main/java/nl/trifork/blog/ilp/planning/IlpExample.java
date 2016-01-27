@@ -60,7 +60,7 @@ public class IlpExample {
     }
 
     public static void main(String args[]){
-        NativeLibraryLoader.loadOrTools(args[0]);
+        NativeLibraryLoader.loadOrTools(args);
 
         IlpExample ilpExample = new IlpExample();
         ilpExample.solve();

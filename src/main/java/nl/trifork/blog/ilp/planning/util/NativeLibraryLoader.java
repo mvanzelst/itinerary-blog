@@ -16,14 +16,13 @@ public class NativeLibraryLoader {
         put("win64", NATIVE_LIB_DIR + "win64/jniortools.dll");
     }};
 
-    public static void loadOrTools(String os){
-        String orToolsLocation = libLocations.get(os);
-        if(orToolsLocation == null){
+    public static void loadOrTools(String[] args){
+        if(args.length == 0 || libLocations.get(args[0]) == null){
             throw new RuntimeException("Please specify platform. " +
                     "Available platforms are: linux64, mac64 or win64");
         }
         try {
-            System.load(new ClassPathResource(orToolsLocation).getFile().getAbsolutePath());
+            System.load(new ClassPathResource(libLocations.get(args[0])).getFile().getAbsolutePath());
         } catch (IOException e) {
             throw new RuntimeException("Failed to load or tools library", e);
         }
