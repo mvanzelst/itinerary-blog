@@ -28,29 +28,29 @@ public class BruteForcePlanning {
         BigInteger showProgressInterval = new BigInteger("10000000");
         long start = System.currentTimeMillis();
         int maxSum = 0;
-        for (String poiTimeslot1 : pois) {
-            for (String poiTimeslot2 : pois) {
-                for (String poiTimeslot3 : pois) {
-                    for (String poiTimeslot4 : pois) {
-                        for (String poiTimeslot5 : pois) {
-                            for (String poiTimeslot6 : pois) {
+        for (String poiTimeSlot1 : pois) {
+            for (String poiTimeSlot2 : pois) {
+                for (String poiTimeSlot3 : pois) {
+                    for (String poiTimeSlot4 : pois) {
+                        for (String poiTimeSlot5 : pois) {
+                            for (String poiTimeSlot6 : pois) {
                                 // Calculate the sum of recommendations
-                                int sum = weightPerPoi.get(poiTimeslot1) +
-                                        weightPerPoi.get(poiTimeslot2) +
-                                        weightPerPoi.get(poiTimeslot3) +
-                                        weightPerPoi.get(poiTimeslot4) +
-                                        weightPerPoi.get(poiTimeslot5) +
-                                        weightPerPoi.get(poiTimeslot6);
+                                int sum = weightPerPoi.get(poiTimeSlot1) +
+                                        weightPerPoi.get(poiTimeSlot2) +
+                                        weightPerPoi.get(poiTimeSlot3) +
+                                        weightPerPoi.get(poiTimeSlot4) +
+                                        weightPerPoi.get(poiTimeSlot5) +
+                                        weightPerPoi.get(poiTimeSlot6);
 
                                 // Check if we have a new best solution
                                 if(sum > maxSum){
                                     maxSum = sum;
-                                    List<String> solution = Arrays.asList(poiTimeslot1,
-                                            poiTimeslot2,
-                                            poiTimeslot3,
-                                            poiTimeslot4,
-                                            poiTimeslot5,
-                                            poiTimeslot6);
+                                    List<String> solution = Arrays.asList(poiTimeSlot1,
+                                            poiTimeSlot2,
+                                            poiTimeSlot3,
+                                            poiTimeSlot4,
+                                            poiTimeSlot5,
+                                            poiTimeSlot6);
                                     System.out.println("Found new best solution: " + solution + ", sum:" + sum);
                                 }
 
