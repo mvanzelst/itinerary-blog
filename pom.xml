@@ -18,6 +18,8 @@
             <groupId>com.google.ortools</groupId>
             <artifactId>ortools</artifactId>
             <version>0.3300</version>
+            <systemPath>${project.basedir}/lib/com.google.ortools.jar</systemPath>
+            <scope>system</scope>
         </dependency>
     </dependencies>
 
