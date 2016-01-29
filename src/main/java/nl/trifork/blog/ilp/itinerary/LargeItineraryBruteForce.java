@@ -7,7 +7,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public class BruteForceItinerary {
+public class LargeItineraryBruteForce {
 
     public static void main(String args[]){
         // List of pois

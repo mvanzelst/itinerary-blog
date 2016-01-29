@@ -10,7 +10,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public class ILPLargeItinerary {
+public class LargeItineraryILP {
 
     public void solve() {
         List<String> pois = IntStream.range(0, 1000)
@@ -110,7 +110,7 @@ public class ILPLargeItinerary {
     public static void main(String args[]){
         NativeLibraryLoader.loadOrTools();
 
-        ILPLargeItinerary ilpSolver = new ILPLargeItinerary();
+        LargeItineraryILP ilpSolver = new LargeItineraryILP();
         ilpSolver.solve();
     }
 }

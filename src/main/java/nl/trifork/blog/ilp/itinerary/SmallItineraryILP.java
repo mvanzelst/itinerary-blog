@@ -6,7 +6,7 @@ import com.google.ortools.linearsolver.MPSolver;
 import com.google.ortools.linearsolver.MPVariable;
 import nl.trifork.blog.ilp.itinerary.util.NativeLibraryLoader;
 
-public class ILPSmallItinerary {
+public class SmallItineraryILP {
 
     public void solve() {
         MPSolver solver = new MPSolver("SmallItinerary", MPSolver.OptimizationProblemType.GLOP_LINEAR_PROGRAMMING);
@@ -62,7 +62,7 @@ public class ILPSmallItinerary {
     public static void main(String args[]){
         NativeLibraryLoader.loadOrTools();
 
-        ILPSmallItinerary ilpExample = new ILPSmallItinerary();
+        SmallItineraryILP ilpExample = new SmallItineraryILP();
         ilpExample.solve();
     }
 }
