@@ -1,15 +1,15 @@
-package nl.trifork.blog.ilp.planning;
+package nl.trifork.blog.ilp.itinerary;
 
 import com.google.ortools.linearsolver.MPConstraint;
 import com.google.ortools.linearsolver.MPObjective;
 import com.google.ortools.linearsolver.MPSolver;
 import com.google.ortools.linearsolver.MPVariable;
-import nl.trifork.blog.ilp.planning.util.NativeLibraryLoader;
+import nl.trifork.blog.ilp.itinerary.util.NativeLibraryLoader;
 
-public class IlpExample {
+public class ILPSmallItinerary {
 
     public void solve() {
-        MPSolver solver = new MPSolver("LinearProgrammingExample", MPSolver.OptimizationProblemType.GLOP_LINEAR_PROGRAMMING);
+        MPSolver solver = new MPSolver("SmallItinerary", MPSolver.OptimizationProblemType.GLOP_LINEAR_PROGRAMMING);
 
         // Create integer variables a,b,c and d with a lower limit of 0 and an upper limit of 1
         MPVariable rijksmuseumMorning = solver.makeIntVar(0, 1, "a");
@@ -62,7 +62,7 @@ public class IlpExample {
     public static void main(String args[]){
         NativeLibraryLoader.loadOrTools();
 
-        IlpExample ilpExample = new IlpExample();
+        ILPSmallItinerary ilpExample = new ILPSmallItinerary();
         ilpExample.solve();
     }
 }

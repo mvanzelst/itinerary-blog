@@ -1,16 +1,16 @@
-package nl.trifork.blog.ilp.planning;
+package nl.trifork.blog.ilp.itinerary;
 
 import com.google.ortools.linearsolver.MPConstraint;
 import com.google.ortools.linearsolver.MPObjective;
 import com.google.ortools.linearsolver.MPSolver;
 import com.google.ortools.linearsolver.MPVariable;
-import nl.trifork.blog.ilp.planning.util.NativeLibraryLoader;
+import nl.trifork.blog.ilp.itinerary.util.NativeLibraryLoader;
 
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public class IlpPlanning {
+public class ILPLargeItinerary {
 
     public void solve() {
         List<String> pois = IntStream.range(0, 1000)
@@ -22,7 +22,7 @@ public class IlpPlanning {
                 .collect(Collectors.toList());
 
 
-        MPSolver solver = new MPSolver("LinearProgrammingExample", MPSolver.OptimizationProblemType.GLOP_LINEAR_PROGRAMMING);
+        MPSolver solver = new MPSolver("LargeItinerary", MPSolver.OptimizationProblemType.GLOP_LINEAR_PROGRAMMING);
         List<MPVariable> allVariables = new ArrayList<>();
         Map<String, List<MPVariable>> variablesGroupedByPoi = new HashMap<>();
         Map<String, List<MPVariable>> variablesGroupedByTimeslot = new HashMap<>();
@@ -57,7 +57,7 @@ public class IlpPlanning {
         // Maximize the outcome of the object function
         objective.setMaximization();
 
-        // Set the constraints to visit poi at most once in all timeslots
+        // Set the constraints to visit poi at most once in all time slots
         for (Map.Entry<String, List<MPVariable>> mpVariablesPerPoi : variablesGroupedByPoi.entrySet()) {
             double constraintMinimumValue = 0D;
             double constraintMaximumValue = 1D;
@@ -73,7 +73,7 @@ public class IlpPlanning {
             }
         }
 
-        // Set the constraints to use timeslot at most once for all pois
+        // Set the constraints to use time slot at most once for all pois
         for (Map.Entry<String, List<MPVariable>> mpVariablesPerTimeslot : variablesGroupedByTimeslot.entrySet()) {
             double constraintMinimumValue = 0D;
             double constraintMaximumValue = 1D;
@@ -110,7 +110,7 @@ public class IlpPlanning {
     public static void main(String args[]){
         NativeLibraryLoader.loadOrTools();
 
-        IlpPlanning ilpSolver = new IlpPlanning();
+        ILPLargeItinerary ilpSolver = new ILPLargeItinerary();
         ilpSolver.solve();
     }
 }

@@ -1,4 +1,4 @@
-package nl.trifork.blog.ilp.planning;
+package nl.trifork.blog.ilp.itinerary;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
@@ -7,7 +7,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public class BruteForcePlanning {
+public class BruteForceItinerary {
 
     public static void main(String args[]){
         // List of pois

@@ -1,4 +1,4 @@
-package nl.trifork.blog.ilp.planning.util;
+package nl.trifork.blog.ilp.itinerary.util;
 
 import org.springframework.core.io.ClassPathResource;
 
